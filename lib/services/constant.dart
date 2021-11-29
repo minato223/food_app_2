@@ -1,11 +1,14 @@
 import 'package:flutter/widgets.dart';
 
 class MyColors {
-  Color get iconColor => const Color(0xff656668);
-  Color get textColor => const Color(0xff9a9c9c);
-  Color get mainColor => const Color(0xfffdc913);
-  Color get unSelectedIconColor => const Color(0xfff36b6a);
-  Color get priceColor => const Color(0xfff36829);
+  Color get mainBgColor => const Color(0xfffafafa);
+  Color get textColor => const Color(0xffd1d1d1);
+  Color get textColorBold => const Color(0xff787878);
+  Color get iconColor => const Color(0xffc08247);
+  Color get unselectedItemColor => const Color(0xfff2f2f2);
+  Color get selectedItemColor => const Color(0xffb6b6b6);
+  Color get homeGradientDark => const Color(0xff1d1f21);
+  Color get homeGradientLight => const Color(0xff3e3f41);
 }
 
 class MyFontSize {
