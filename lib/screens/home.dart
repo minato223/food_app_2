@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:food_app_2/screens/detail.dart';
 import 'package:food_app_2/services/constant.dart';
 
 class Home extends StatefulWidget {
@@ -279,66 +280,73 @@ class _HomeState extends State<Home> {
     return Builder(builder: (context) {
       double _width = MediaQuery.of(context).size.width;
       double _height = MediaQuery.of(context).size.height;
-      return Container(
-        padding: EdgeInsets.all(_width * 0.04),
-        decoration: BoxDecoration(
-            gradient: RadialGradient(
-              colors: [
-                MyColors().homeGradientLight,
-                MyColors().homeGradientDark,
-              ],
-            ),
-            borderRadius: BorderRadius.circular(_width * 0.05)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              food.img,
-              width: double.infinity,
-              height: _height * 0.2,
-            ),
-            Text(
-              food.title,
-              style: TextStyle(
-                  fontFamily: "Ubuntu",
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: MyFontSize(context: context).p5),
-            ),
-            SizedBox(height: _height * 0.01),
-            Text(
-              food.subtitle,
-              style: TextStyle(
-                  fontFamily: "Ubuntu",
-                  color: MyColors().textColor,
-                  fontWeight: FontWeight.w200,
-                  fontSize: MyFontSize(context: context).p4),
-            ),
-            SizedBox(height: _height * 0.01),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: List.generate(
-                      5,
-                      (index) => Icon(
-                            Icons.star_rate_rounded,
-                            color: Colors.orange[600],
-                            size: MyFontSize(context: context).p5,
-                          )),
+      return InkWell(
+        onTap: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => Detail(food: food))),
+        child: Container(
+          padding: EdgeInsets.all(_width * 0.04),
+          decoration: BoxDecoration(
+              gradient: RadialGradient(
+                colors: [
+                  MyColors().homeGradientLight,
+                  MyColors().homeGradientDark,
+                ],
+              ),
+              borderRadius: BorderRadius.circular(_width * 0.05)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Hero(
+                tag: food.id,
+                child: Image.asset(
+                  food.img,
+                  width: double.infinity,
+                  height: _height * 0.2,
                 ),
-                Text(
-                  "\$${food.price}",
-                  style: TextStyle(
-                      fontFamily: "Ubuntu",
-                      color: MyColors().textColor,
-                      fontWeight: FontWeight.w200,
-                      fontSize: MyFontSize(context: context).p4),
-                ),
-              ],
-            )
-          ],
+              ),
+              Text(
+                food.title,
+                style: TextStyle(
+                    fontFamily: "Ubuntu",
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: MyFontSize(context: context).p5),
+              ),
+              SizedBox(height: _height * 0.01),
+              Text(
+                food.subtitle,
+                style: TextStyle(
+                    fontFamily: "Ubuntu",
+                    color: MyColors().textColor,
+                    fontWeight: FontWeight.w200,
+                    fontSize: MyFontSize(context: context).p4),
+              ),
+              SizedBox(height: _height * 0.01),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: List.generate(
+                        5,
+                        (index) => Icon(
+                              Icons.star_rate_rounded,
+                              color: Colors.orange[600],
+                              size: MyFontSize(context: context).p5,
+                            )),
+                  ),
+                  Text(
+                    "\$${food.price}",
+                    style: TextStyle(
+                        fontFamily: "Ubuntu",
+                        color: MyColors().textColor,
+                        fontWeight: FontWeight.w200,
+                        fontSize: MyFontSize(context: context).p4),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       );
     });

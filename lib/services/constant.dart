@@ -8,7 +8,8 @@ class MyColors {
   Color get unselectedItemColor => const Color(0xfff2f2f2);
   Color get selectedItemColor => const Color(0xffb6b6b6);
   Color get homeGradientDark => const Color(0xff1d1f21);
-  Color get homeGradientLight => const Color(0xff3e3f41);
+  Color get homeGradientLight => const Color(0xff4c4d4e);
+  Color get topicBgColor => const Color(0xfffbeee2);
 }
 
 class MyFontSize {
